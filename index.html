@@ -61,7 +61,6 @@
             margin-bottom: 20px;
         }
         
-        /* Tambahan untuk kolom password */
         input[type="password"] {
             width: 80%;
             padding: 12px;
@@ -90,39 +89,43 @@
             margin: 10px auto;
             white-space: normal; 
         }
-        .btn-action {
-            display: inline-block;
-            margin: 10px 5px;
-            width: auto;
-        }
-
-        .polaroid {
-            background: white;
-            padding: 10px 10px 30px 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin: 0 auto 20px auto;
-            display: inline-block;
-        }
-        .polaroid img {
-            max-width: 200px;
-            height: auto;
-        }
-        .polaroid-group {
+        
+        /* PENGATURAN TOMBOL ACCEPT & DECLINE BERSEBELAHAN */
+        .action-buttons {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 15px; 
+            min-height: 50px;
+        }
+        .btn-action {
+            width: auto;
+            margin: 0;
+        }
+
+        /* PENGATURAN FOTO PNG TANPA BACKGROUND (TRANSPARAN) */
+        .img-single {
+            max-width: 1000px; /* Ukuran maksimal foto tunggal */
+            height: auto;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        .img-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Jarak antar dua foto */
             margin-bottom: 20px;
         }
-        .polaroid-group .polaroid {
-            margin: 0; 
-            padding: 8px 8px 25px 8px; 
-        }
-        .polaroid-group img {
-            max-width: 120px; 
+        .img-group img {
+            max-width: 120px; /* Ukuran foto diperkecil agar muat dua bersebelahan */
             height: auto;
         }
+        
         #btnTidak {
             position: relative;
+            z-index: 100;
         }
     </style>
 </head>
@@ -139,15 +142,12 @@
             <br><button class="btn-action" onclick="cekPassword()">Buka</button>
         </div>
         
-        <!-- Step 1: Layar Notifikasi (2 Polaroid) -->
+        <!-- Step 1: Layar Notifikasi (2 Foto PNG) -->
         <div id="step1" class="step">
-            <div class="polaroid-group">
-                <div class="polaroid">
-                    <img src="PolaroidFirstMeet1.png" alt="Foto Kiri">
-                </div>
-                <div class="polaroid">
-                    <img src="PolaroidFirstMeet2.png" alt="Foto Kanan">
-                </div>
+            <div class="img-group">
+                <!-- NAMA FILE SUDAH DIUBAH MENJADI .png -->
+                <img src="PolaroidFirstMeet1.png" alt="Foto Kiri">
+                <img src="PolaroidFirstMeet2.png" alt="Foto Kanan">
             </div>
             <h2>You have one private notification.<br>Buka sekarang?</h2>
             <button class="btn-action" onclick="mulaiMusicDanLanjut(2)">Open it</button>
@@ -162,14 +162,14 @@
 
         <!-- Step 3: Pertanyaan 2 -->
         <div id="step3" class="step">
-            <h2>We both know kakak itu gampang ketiduran dan kadang super unorganized.<br><br>Who usually has to deal with my mess?</h2>
+            <h2>We both know aku orangnya gampang bosan dan kadang super unorganized. Tapi kalau lagi sama kamu, kenapa rasanya beda ya?<br><br>Who usually has to deal with my mess?</h2>
             <button class="btn-choice" onclick="lanjut(4)">Me, obviously</button>
             <button class="btn-choice" onclick="lanjut(4)">Udah tahu nanya 🙄</button>
         </div>
 
         <!-- Step 4: Pertanyaan 3 -->
         <div id="step4" class="step">
-            <h2>Do you into with zodiac? As a Sagitarius, do you think Kakak actually lebih ke ngeselin atau ngangenin?</h2>
+            <h2>As a Sagitarius, do you think I’m actually lebih ke ngeselin atau ngangenin?</h2>
             <button class="btn-choice" onclick="lanjut(5)">Super ngeselin</button>
             <button class="btn-choice" onclick="lanjut(5)">Ngeselin but slightly ngangenin</button>
         </div>
@@ -183,17 +183,15 @@
 
         <!-- Step 6: Pertanyaan 5 -->
         <div id="step6" class="step">
-            <h2>Last question... why do you think kakak went through all this trouble making a secret website khusus buat dedek?</h2>
+            <h2>Last question... why do you think I went through all this trouble making a secret website khusus buat kamu?</h2>
             <button class="btn-choice" onclick="lanjut(7)">Because you have too much free time</button>
             <button class="btn-choice" onclick="lanjut(7)">Because you have something to tell me</button>
         </div>
 
         <!-- Step 7: Sesi Pengakuan -->
         <div id="step7" class="step">
-            <div class="polaroid">
-                <img src="Polaroidiloveyou.png" alt="Foto 2">
-            </div>
-            <!-- EDIT TEKS DALAM KURUNG SIKU DI BAWAH INI -->
+            <!-- NAMA FILE SUDAH DIUBAH MENJADI .png -->
+            <img src="Polaroidiloveyou.png" alt="Foto 2" class="img-single">
             <p class="pengakuan">
                 Honestly, I just wanted to tell you that... <b>[hapus ini dan ketik alasan singkat kenapa kamu nyaman sama dia di sini]</b>. You make things make sense. Dan aku harap kamu ngerasain hal yang sama.
             </p>
@@ -202,18 +200,17 @@
 
         <!-- Step 8: Penembakan Akhir -->
         <div id="step8" class="step">
-            <h2>So, after all those questions and everything I just told you... cuma sisa satu request lagi nih yang belum disubmit.<br><br>Will dedek jiminie accept kakak younghyun private request to enter dedek heart?</h2>
-            <div>
+            <h2>So, after all those questions and everything I just told you... cuma sisa satu request lagi nih yang belum di-submit.<br><br>Will you accept my private request to enter your heart?</h2>
+            <div class="action-buttons">
                 <button class="btn-action" id="btnMau" onclick="lanjut(9)">Accept</button>
-                <button class="btn-action" id="btnTidak" onmouseover="pindahTombol()">Decline</button>
+                <button class="btn-action" id="btnTidak" onmouseover="pindahTombol()" onclick="pindahTombol()">Decline</button>
             </div>
         </div>
 
         <!-- Step 9: Ending -->
         <div id="step9" class="step">
-            <div class="polaroid">
-                <img src="PolaroidEnd.png" alt="Foto 3">
-            </div>
+            <!-- NAMA FILE SUDAH DIUBAH MENJADI .png -->
+            <img src="PolaroidEnd.png" alt="Foto 3" class="img-single">
             <h2>Yeay! Request Accepted ❤️</h2>
             <p class="pengakuan">Thank you, I love you!</p>
         </div>
@@ -221,20 +218,31 @@
     </div>
 
     <script>
-        // --- DI SINI TEMPAT MENGUBAH PASSWORDNYA ---
-        const passwordBenar = "111904129300"; 
+        // ==========================================
+        // BAGIAN PENGATURAN (SILAKAN UBAH DI SINI)
+        // ==========================================
         
+        // 1. Ganti password di sini
+        const passwordBenar = "sayangku"; 
+        
+        // 2. Atur lagu mulai dari detik ke berapa (contoh: 30 untuk mulai dari detik ke-30)
+        const mulaiLaguDiDetik = 15; 
+        
+        // ==========================================
+
         function cekPassword() {
             let inputan = document.getElementById('inputPassword').value;
             if(inputan.toLowerCase() === passwordBenar.toLowerCase()) {
-                lanjut(1); // Lanjut ke layar notifikasi jika password benar
+                lanjut(1); 
             } else {
                 alert("Passwordnya salah! Coba ingat-ingat lagi 🤭");
             }
         }
 
         function mulaiMusicDanLanjut(nextStep) {
-            document.getElementById('bgMusic').play();
+            let musik = document.getElementById('bgMusic');
+            musik.currentTime = mulaiLaguDiDetik; 
+            musik.play();
             lanjut(nextStep);
         }
 
@@ -246,8 +254,11 @@
 
         function pindahTombol() {
             const btn = document.getElementById('btnTidak');
-            const maxX = window.innerWidth - btn.offsetWidth - 30;
-            const maxY = window.innerHeight - btn.offsetHeight - 30;
+            
+            // Logika agar tombol kabur tidak keluar dari layar
+            const maxX = window.innerWidth - btn.offsetWidth - 20;
+            const maxY = window.innerHeight - btn.offsetHeight - 20;
+            
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
             
