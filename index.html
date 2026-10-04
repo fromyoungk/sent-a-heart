@@ -14,7 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('background.jpg'); 
+            background-image: url('Background.png'); 
             background-size: cover;
             background-position: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -67,7 +67,7 @@
             line-height: 1.6;
             color: #444;
             margin-bottom: 20px;
-            text-align: left; /* Teks dibikin rata kiri agar enak dibaca seperti surat */
+            text-align: left; 
         }
         p.teks-tengah {
             font-size: 16px;
@@ -119,11 +119,20 @@
             margin: 0;
         }
 
+        /* EFEK KURSOR CINCIN KHUSUS UNTUK TOMBOL ACCEPT & DECLINE (HANYA AKTIF DI LAPTOP/PC) */
+        #btnMau, #btnTidak {
+            cursor: url('cincin.png'), pointer;
+        }
+        #btnTidak {
+            position: relative;
+            z-index: 100;
+        }
+
         /* Gaya khusus untuk link X (Twitter) */
         .link-x {
             display: inline-block;
             margin-top: 15px;
-            background-color: #1DA1F2; /* Warna biru Twitter */
+            background-color: #1DA1F2; 
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
@@ -135,9 +144,11 @@
             background-color: #0c85d0;
         }
 
+        /* PENGATURAN FOTO DIPERBESAR */
         .img-single {
-            max-width: 180px; 
-            max-height: 200px;
+            width: 100%;
+            max-width: 250px; 
+            max-height: 250px;
             object-fit: contain; 
             margin: 0 auto 15px auto;
             display: block;
@@ -146,18 +157,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px; 
+            gap: 10px; 
             margin-bottom: 20px;
         }
         .img-group img {
-            max-width: 120px; 
-            max-height: 150px;
+            width: 48%; 
+            max-width: 160px; 
+            max-height: 200px;
             object-fit: contain;
-        }
-        
-        #btnTidak {
-            position: relative;
-            z-index: 100;
         }
     </style>
 </head>
@@ -173,7 +180,7 @@
             <button class="btn-action" onclick="lanjut(2)">Check</button>
         </div>
 
-        <!-- Step 2: Halaman Password (Lagu play setelah ini berhasil) -->
+        <!-- Step 2: Halaman Password -->
         <div id="step2" class="step">
             <h2>Masukkan password untuk membuka pesan rahasia ini 🔐</h2>
             <input type="password" id="inputPassword" placeholder="Ketik password di sini...">
@@ -184,7 +191,6 @@
         <div id="step3" class="step">
             <h2>Mengingat Kembali...</h2>
             <p class="teks-cerita">
-                <!-- EDIT TEKS KENANGAN DI BAWAH INI -->
                 Hai... Nggak kerasa ya kita udah lumayan lama kenal. Masih inget nggak pertama kali kita ngobrol? Dari yang awalnya canggung, sampai akhirnya bisa ngobrolin banyak hal <i>random</i> setiap hari.<br><br>
                 Banyak banget momen yang udah kita lewati di masa PDKT ini. Makasih ya udah selalu sabar ngadepin aku dan jadi tempat cerita yang paling nyaman buat aku.
             </p>
@@ -195,7 +201,7 @@
         <div id="step4" class="step">
             <div class="img-group">
                 <img src="PolaroidFirstMeet1.png" alt="Foto Kiri">
-                <img src="PolaroidFirstMeet2.png" alt="Foto Kanan">
+                <img src="PolaroidFirstmeet2.png" alt="Foto Kanan">
             </div>
             <h2>Look how far we've come! ✨</h2>
             <p class="teks-tengah">Itu sedikit dari banyaknya memori kita.</p>
@@ -244,7 +250,7 @@
             <button class="btn-choice" onclick="lanjut(11)">Because you have something to tell me</button>
         </div>
 
-        <!-- Step 11: Foto Polaroid ke-2 (Setelah pertanyaan terakhir) -->
+        <!-- Step 11: Foto Polaroid ke-2 -->
         <div id="step11" class="step">
             <img src="Polaroidiloveyou.png" alt="Foto 2" class="img-single">
             <h2>Okay, all questions answered!</h2>
@@ -255,24 +261,24 @@
             <button class="btn-action" onclick="lanjut(12)">Ready?</button>
         </div>
 
-        <!-- Step 12: Penembakan Akhir (Tombol Decline Lari) -->
+        <!-- Step 12: Penembakan Akhir -->
         <div id="step12" class="step">
             <h2>So, after all those memories and questions... cuma sisa satu request lagi nih yang belum di-submit.<br><br>Will you accept my private request to enter your heart and be my girlfriend? ❤️</h2>
             <div class="action-buttons">
-                <!-- Tombol Accept memicu confetti -->
-                <button class="btn-action" id="btnMau" onclick="terimaCinta()">Accept</button>
+                <!-- EMOJI CINCIN DITAMBAHKAN DI SINI -->
+                <button class="btn-action" id="btnMau" onclick="terimaCinta()">💍 Accept</button>
                 <button class="btn-action" id="btnTidak" onmouseover="pindahTombol()" onclick="pindahTombol()">Decline</button>
             </div>
         </div>
 
-        <!-- Step 13: Ending dengan Polaroid 3 dan Link Twitter -->
+        <!-- Step 13: Ending -->
         <div id="step13" class="step">
             <img src="PolaroidEnd.png" alt="Foto 3" class="img-single">
             <h2>Yeay! Request Accepted ❤️</h2>
             <p class="teks-tengah">Thank you, I love you!<br>Sekarang, cepetan kasih tau reaksi kamu ke aku!</p>
             
             <!-- UBAH LINK X (TWITTER) DI BAWAH INI -->
-            <a href="https://x.com/USERNAME_X_KAMU" target="_blank" class="link-x">Kirim Pesan ke X Aku 📩</a>
+            <a href="https://x.com/by__youngk" target="_blank" class="link-x">Kirim Pesan ke X Aku 📩</a>
         </div>
 
     </div>
@@ -288,12 +294,11 @@
         function cekPassword() {
             let inputan = document.getElementById('inputPassword').value;
             if(inputan.toLowerCase() === passwordBenar.toLowerCase()) {
-                // Lagu dimulai saat password benar!
                 let musik = document.getElementById('bgMusic');
                 musik.currentTime = mulaiLaguDiDetik; 
                 musik.play();
                 
-                lanjut(3); // Langsung lompat ke slide teks kenangan
+                lanjut(3); 
             } else {
                 alert("Passwordnya salah! Coba ingat-ingat lagi 🤭");
             }
@@ -306,13 +311,11 @@
         }
 
         function terimaCinta() {
-            // Tembakkan Confetti!
             confetti({
                 particleCount: 150,
                 spread: 70,
                 origin: { y: 0.6 }
             });
-            // Lanjut ke slide terakhir
             lanjut(13);
         }
 
