@@ -182,16 +182,16 @@
     <audio id="bgMusic" src="1000x-GheaIndrawari.m4a" loop></audio>
 
     <div class="container">
-        <!-- Step 1-4 -->
+        
         <div id="step1" class="step active">
-            <h2>You have one private notification.<br>Buka sekarang?</h2>
-            <button class="btn-action" onclick="lanjut(2)">Check</button>
+            <h2>Hey @krinablu!<br>You have one private notification.<br>Open it now?</h2>
+            <button class="btn-action" onclick="lanjut(2)">Yes!</button>
         </div>
 
         <div id="step2" class="step">
-            <h2>Masukkan password untuk membuka pesan rahasia ini 🔐</h2>
-            <input type="password" id="inputPassword" placeholder="Ketik password di sini...">
-            <br><button class="btn-action" onclick="cekPassword()">Buka</button>
+            <h2>Oops, looks like this private notification is really confidential 🤫<br><br>Please enter the password to unlock.</h2>
+            <input type="password" id="inputPassword" placeholder="Type the password here...">
+            <br><button class="btn-action" onclick="cekPassword()">Unlock</button>
         </div>
         
         <div id="step3" class="step">
@@ -205,6 +205,7 @@
 
         <div id="step4" class="step">
             <div class="img-group">
+                <!-- FOTO SUDAH DIREVISI MENJADI FIRST -->
                 <img src="PolaroidFirstMeet1.png" alt="Foto Kiri">
                 <img src="PolaroidFirstMeet2.png" alt="Foto Kanan">
             </div>
@@ -213,48 +214,51 @@
             <button class="btn-action" onclick="lanjut(5)">Next</button>
         </div>
 
-        <!-- Step 5-9 -->
         <div id="step5" class="step">
             <h2>Nah, sebelum lanjut lebih jauh...</h2>
             <p class="teks-tengah">Ada total 6 pertanyaan penting nih yang mau aku sampein ke kamu. Jawab sejujur-jujurnya ya!</p>
             <button class="btn-action" onclick="lanjut(6)">Mulai Pertanyaan</button>
         </div>
 
+        <!-- Pertanyaan 1 -->
         <div id="step6" class="step">
             <h2>1. Let's be honest, di antara kita berdua, siapa yang sebenarnya paling random dan suka iseng?</h2>
-            <button class="btn-choice" onclick="lanjut(7)">Definitely me (Aku)</button>
-            <button class="btn-choice" onclick="lanjut(7)">Kamu lah!</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(1, 'Definitely me (Aku)'); lanjut(7)">Definitely me (Aku)</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(1, 'Kamu lah!'); lanjut(7)">Kamu lah!</button>
         </div>
 
+        <!-- Pertanyaan 2 -->
         <div id="step7" class="step">
             <h2>2. We both know aku orangnya gampang bosan dan kadang super unorganized. Tapi kalau lagi sama kamu, kenapa rasanya beda ya?<br><br>Who usually has to deal with my mess?</h2>
-            <button class="btn-choice" onclick="lanjut(8)">Me, obviously</button>
-            <button class="btn-choice" onclick="lanjut(8)">Udah tahu nanya 🙄</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(2, 'Me, obviously'); lanjut(8)">Me, obviously</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(2, 'Udah tahu nanya 🙄'); lanjut(8)">Udah tahu nanya 🙄</button>
         </div>
 
+        <!-- Pertanyaan 3 -->
         <div id="step8" class="step">
             <h2>3. As a Gemini, do you think I’m actually lebih ke ngeselin atau ngangenin?</h2>
-            <button class="btn-choice" onclick="lanjut(9)">Super ngeselin</button>
-            <button class="btn-choice" onclick="lanjut(9)">Ngeselin but slightly ngangenin</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(3, 'Super ngeselin'); lanjut(9)">Super ngeselin</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(3, 'Ngeselin but slightly ngangenin'); lanjut(9)">Ngeselin but slightly ngangenin</button>
         </div>
 
+        <!-- Pertanyaan 4 -->
         <div id="step9" class="step">
             <h2>4. Who secretly misses the other person more? Siapa yang gengsi tapi kangen duluan?</h2>
-            <button class="btn-choice" onclick="lanjut(10)">I do</button>
-            <button class="btn-choice" onclick="lanjut(10)">You do</button>
+            <textarea id="jawabanTeks4" rows="3" placeholder="Ketik jawaban jujurmu di sini..."></textarea>
+            <br>
+            <button class="btn-action" onclick="lanjutQ4()">Jawab & Lanjut</button>
         </div>
 
-        <!-- STEP 10: PERTANYAAN 5 (MODE ISIAN TEKS) -->
+        <!-- Pertanyaan 5 -->
         <div id="step10" class="step">
             <h2>5. Sejujurnya, apa hal yang paling kamu suka (atau mungkin kurang suka) dari aku, dan gimana perasaanmu selama kita deket ini?</h2>
             
-            <textarea id="jawabanTeks" rows="4" placeholder="Ketik perasaan jujurmu di sini..."></textarea>
+            <textarea id="jawabanTeks5" rows="4" placeholder="Ketik perasaan jujurmu di sini..."></textarea>
             
             <br>
             <button class="btn-action" id="btnKirimRahasia" onclick="kirimKeEmail()">Jawab & Lanjut</button>
         </div>
 
-        <!-- Step 11-13 -->
         <div id="step11" class="step">
             <img src="Polaroidiloveyou.png" alt="Foto 2" class="img-single">
             <h2>Okay, 5 pertanyaan udah kejawab!</h2>
@@ -278,8 +282,8 @@
             <h2>Yeay! Request Accepted ❤️</h2>
             <p class="teks-tengah">Thank you, I love you!<br>Sekarang, cepetan kasih tau reaksi kamu ke aku!</p>
             
-            <!-- JANGAN LUPA UBAH LINK X (TWITTER) DI BAWAH INI -->
-            <a href="https://x.com/by__youngk" target="_blank" class="link-x">Kirim Pesan ke X Aku 📩</a>
+            <!-- UBAH LINK X (TWITTER) DI BAWAH INI NANTI YA -->
+            <a href="https://x.com/USERNAME_X_KAMU" target="_blank" class="link-x">Kirim Pesan ke X Aku 📩</a>
         </div>
 
     </div>
@@ -292,9 +296,16 @@
         const mulaiLaguDiDetik = 0; 
         
         // ==========================================
-        // 2. LINK FORMSPREE SUDAH DIMASUKKAN DI SINI
+        // 2. LINK FORMSPREE
         // ==========================================
         const linkFormspree = "https://formspree.io/f/xjygbqkz";
+
+        // ==========================================
+        // 3. VARIABEL UNTUK MENYIMPAN JAWABAN SEMENTARA
+        // ==========================================
+        let jawabanQ1 = "";
+        let jawabanQ2 = "";
+        let jawabanQ3 = "";
 
         function cekPassword() {
             let inputan = document.getElementById('inputPassword').value;
@@ -304,7 +315,7 @@
                 musik.play();
                 lanjut(3); 
             } else {
-                alert("Passwordnya salah! Coba ingat-ingat lagi 🤭");
+                alert("Wrong password! Try to remember it again 🤭");
             }
         }
 
@@ -314,12 +325,27 @@
             document.getElementById('step' + nextStep).classList.add('active');
         }
 
-        // FUNGSI KIRIM EMAIL DIAM-DIAM
+        function simpanJawabanPilihan(nomorSoal, jawaban) {
+            if (nomorSoal === 1) jawabanQ1 = jawaban;
+            if (nomorSoal === 2) jawabanQ2 = jawaban;
+            if (nomorSoal === 3) jawabanQ3 = jawaban;
+        }
+
+        function lanjutQ4() {
+            const jawaban4 = document.getElementById('jawabanTeks4').value;
+            if(jawaban4.trim() === "") {
+                alert("Jawab dulu dong, masa dikosongin! 🥺");
+                return;
+            }
+            lanjut(10); 
+        }
+
         function kirimKeEmail() {
-            const jawaban = document.getElementById('jawabanTeks').value;
+            const jawaban4 = document.getElementById('jawabanTeks4').value;
+            const jawaban5 = document.getElementById('jawabanTeks5').value;
             const tombol = document.getElementById('btnKirimRahasia');
 
-            if(jawaban.trim() === "") {
+            if(jawaban5.trim() === "") {
                 alert("Jawab dulu dong, masa dikosongin! 🥺");
                 return;
             }
@@ -334,7 +360,11 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "Pesan Dari Dia": jawaban
+                    "Jawaban Q1 (Paling Random)": jawabanQ1,
+                    "Jawaban Q2 (Deal with mess)": jawabanQ2,
+                    "Jawaban Q3 (Ngeselin/Ngangen)": jawabanQ3,
+                    "Jawaban Q4 (Kangen Duluan)": jawaban4,
+                    "Jawaban Q5 (Perasaan Suka/Duka)": jawaban5
                 })
             }).then(response => {
                 tombol.innerText = "Jawab & Lanjut";
