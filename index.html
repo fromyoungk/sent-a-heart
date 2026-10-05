@@ -142,7 +142,7 @@
         .link-x {
             display: inline-block;
             margin-top: 15px;
-            background-color: #1DA1F2; 
+            background-color: #c6f7f7; 
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
@@ -151,7 +151,7 @@
             transition: 0.3s;
         }
         .link-x:hover {
-            background-color: #0c85d0;
+            background-color: #a8e6e6;
         }
 
         .img-single {
@@ -184,40 +184,42 @@
     <div class="container">
         
         <div id="step1" class="step active">
-            <h2>Hey @krinablu!<br>You have one private notification.<br>Open it now?</h2>
+            <h2>Hey @krinablu!<br>You have one private notification.ⓘ<br>Open it now?</h2>
             <button class="btn-action" onclick="lanjut(2)">Yes!</button>
         </div>
 
         <div id="step2" class="step">
-            <h2>Oops, looks like this private notification is really confidential 🤫<br><br>Please enter the password to unlock.</h2>
+            <h2>Oops, looks like this private notification is really confidential.<br><br>Please enter the password to unlock.</h2>
             <input type="password" id="inputPassword" placeholder="Type the password here...">
             <br><button class="btn-action" onclick="cekPassword()">Unlock</button>
         </div>
         
         <div id="step3" class="step">
-            <h2>Mengingat Kembali...</h2>
+            <h2 id="step3">Loading Memory Archive... ⟲</h2>
             <p class="teks-cerita">
-                Hai... Nggak kerasa ya kita udah lumayan lama kenal. Masih inget nggak pertama kali kita ngobrol? Dari yang awalnya canggung, sampai akhirnya bisa ngobrolin banyak hal <i>random</i> setiap hari.<br><br>
-                Banyak banget momen yang udah kita lewati di masa PDKT ini. Makasih ya udah selalu sabar ngadepin aku dan jadi tempat cerita yang paling nyaman buat aku.
+                Diantara banyaknya kemungkinan yang terjadi, pada saat itu kakak memutuskan untuk ikut posting kriteria WGL yang diadakan oleh @Beserpe. Kakak cek postingan WGL kakak untuk tahu siapa saja yang <i>reply</i>. Kakak temukan uname dedek disana <i>reply</i> dengan gambar text lucu dan foto dedek. Karena penasaran, kakak <i>stalk</i> akun dedek saat itu. Kakak sudah menemukan siapa yang kakak pilih, dan semakin yakin setelah dedek tetap <i>reply</i> sampai hari terakhir berikan kakak sarapan [pribadi yang mudah luluh jika diberi makan] 🤭
+                <br><br>
+                Akhirnya kita verif tuh, awal-awal kakak canggung banget hahaha. <i>But we have so much in common, our humour is matched, the topics we talk about. Sometimes I do make you feel sad, upset, and angry, but I'm really glad that you still choose to stay beside me and go through whatever scenario might happen.</i>
+                <br><br>
+                Terima kasih sudah sabar, sudah sayang, sudah perhatian, sudah marah, sudah sedih, sudah kecewa, sudah bahagia, dan sudah cerita semuanya ke kakak apa yang dedek rasain. Kedepannya pasti tidak akan selalu mudah. Kakak harap kita berdua selalu ingat apa yang sudah kita lalui hingga sampai di sini. <i>Honestly having you around makes everything so much better. I love you</i> dedek jiminie cayang.
             </p>
             <button class="btn-action" onclick="lanjut(4)">Lanjut</button>
         </div>
 
         <div id="step4" class="step">
-            <div class="img-group">
-                <!-- FOTO SUDAH DIREVISI MENJADI FIRST -->
-                <img src="PolaroidFirstMeet1.png" alt="Foto Kiri">
-                <img src="PolaroidFirstMeet2.png" alt="Foto Kanan">
-            </div>
-            <h2>Look how far we've come! ✨</h2>
-            <p class="teks-tengah">Itu sedikit dari banyaknya memori kita.</p>
-            <button class="btn-action" onclick="lanjut(5)">Next</button>
-        </div>
+            <div class="img-group">
+                <img src="PolaroidFirstMeet1.png" alt="Foto Kiri">
+                <img src="PolaroidFirstMeet2.png" alt="Foto Kanan">
+            </div>
+            <h2>File Found: First_Meet.jpg ♡ The Day We Finally Met ♡ </h2>
+            <p class="teks-tengah">Hari di mana semua rasa canggung campur aduk sama rasa senang, setelah kita berdua verif WGL. <i>Definitely a day to remember!</i></p>
+            <button class="btn-action" onclick="lanjut(5)">Next</button>
+        </div>
 
-        <div id="step5" class="step">
-            <h2>Nah, sebelum lanjut lebih jauh...</h2>
-            <p class="teks-tengah">Ada total 6 pertanyaan penting nih yang mau aku sampein ke kamu. Jawab sejujur-jujurnya ya!</p>
-            <button class="btn-action" onclick="lanjut(6)">Mulai Pertanyaan</button>
+       <div id="step5" class="step">
+            <h2>Verifying Feelings... 🔍︎</h2>
+            <p class="teks-tengah">Eits, tunggu dulu! Tidak bisa langsung lanjut begitu saja. Kakak butuh jawaban jujur dari dedek untuk beberapa pertanyaan ini. <i>No cheating, just your honest feelings. Ready?</i> Kakak bakal baca semuanya loh 🤭</p>
+            <button class="btn-action" onclick="lanjut(6)">Ready, Kak!</button>
         </div>
 
         <!-- Pertanyaan 1 -->
