@@ -223,44 +223,43 @@
         </div>
 
         <!-- Pertanyaan 1 -->
+        <!-- Pertanyaan 1 -->
         <div id="step6" class="step">
-            <h2>1. Let's be honest, di antara kita berdua, siapa yang sebenarnya paling random dan suka iseng?</h2>
-            <button class="btn-choice" onclick="simpanJawabanPilihan(1, 'Definitely me (Aku)'); lanjut(7)">Definitely me (Aku)</button>
-            <button class="btn-choice" onclick="simpanJawabanPilihan(1, 'Kamu lah!'); lanjut(7)">Kamu lah!</button>
+            <h2>Siapa yang paling random, dan suka jahil di antara kita berdua?</h2>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(1, 'Kakak dong!'); lanjut(7)">Kakak dong!</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(1, 'Dedek lah!'); lanjut(7)">Dedek lah!</button>
         </div>
 
         <!-- Pertanyaan 2 -->
         <div id="step7" class="step">
-            <h2>2. We both know aku orangnya gampang bosan dan kadang super unorganized. Tapi kalau lagi sama kamu, kenapa rasanya beda ya?<br><br>Who usually has to deal with my mess?</h2>
-            <button class="btn-choice" onclick="simpanJawabanPilihan(2, 'Me, obviously'); lanjut(8)">Me, obviously</button>
-            <button class="btn-choice" onclick="simpanJawabanPilihan(2, 'Udah tahu nanya 🙄'); lanjut(8)">Udah tahu nanya 🙄</button>
+            <h2>Do you believe in zodiac? As a Sagitarius, dedek pikir kakak itu lebih ke ngeselin atau ngangenin?</h2>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(2, 'Ngeselin banget 🙄'); lanjut(8)">Ngeselin banget 🙄</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(2, 'Ngeselin tapi ngangenin ❤️'); lanjut(8)">Ngeselin tapi ngangenin ❤️</button>
         </div>
 
         <!-- Pertanyaan 3 -->
         <div id="step8" class="step">
-            <h2>3. As a Gemini, do you think I’m actually lebih ke ngeselin atau ngangenin?</h2>
-            <button class="btn-choice" onclick="simpanJawabanPilihan(3, 'Super ngeselin'); lanjut(9)">Super ngeselin</button>
-            <button class="btn-choice" onclick="simpanJawabanPilihan(3, 'Ngeselin but slightly ngangenin'); lanjut(9)">Ngeselin but slightly ngangenin</button>
+            <h2>Siapa yang kelakuannya paling aneh dan suka asbun?</h2>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(3, 'Jelas Kakak 😂'); lanjut(9)">Jelas Kakak 😂</button>
+            <button class="btn-choice" onclick="simpanJawabanPilihan(3, 'Dedek juga sih kadang 🙈'); lanjut(9)">Dedek juga sih kadang 🙈</button>
         </div>
 
         <!-- Pertanyaan 4 -->
         <div id="step9" class="step">
-            <h2>4. Who secretly misses the other person more? Siapa yang gengsi tapi kangen duluan?</h2>
-            <textarea id="jawabanTeks4" rows="3" placeholder="Ketik jawaban jujurmu di sini..."></textarea>
+            <h2>Kakak mau tahu hal yang dedek sukai dan kurang disukai dari kakak, setelah kita dekat. Terus moment apa yang masih dedek ingat sampai sekarang?</h2>
+            <textarea id="jawabanTeks4" rows="4" placeholder="Ketik jawaban jujur dedek di sini..."></textarea>
             <br>
-            <button class="btn-action" onclick="lanjutQ4()">Jawab & Lanjut</button>
+            <button class="btn-action" onclick="lanjutQ4()">Save & Next ✨</button>
         </div>
 
         <!-- Pertanyaan 5 -->
         <div id="step10" class="step">
-            <h2>5. Sejujurnya, apa hal yang paling kamu suka (atau mungkin kurang suka) dari aku, dan gimana perasaanmu selama kita deket ini?</h2>
-            
-            <textarea id="jawabanTeks5" rows="4" placeholder="Ketik perasaan jujurmu di sini..."></textarea>
-            
+            <h2>5. Kira-kira bisa dedek bayangkan? setelah kita resmi jadian, hubungan kita akan seperti apa? Dan menurut dedek, kenapa kakak sampai repot-repot bikin website ini buat dedek?</h2>
+            <textarea id="jawabanTeks5" rows="4" placeholder="Ketik bayangan & tebakan dedek di sini..."></textarea>
             <br>
-            <button class="btn-action" id="btnKirimRahasia" onclick="kirimKeEmail()">Jawab & Lanjut</button>
+            <button class="btn-action" id="btnKirimRahasia" onclick="kirimKeEmail()">Send to Kakak 💌</button>
         </div>
-
+        
         <div id="step11" class="step">
             <img src="Polaroidiloveyou.png" alt="Foto 2" class="img-single">
             <h2>Okay, 5 pertanyaan udah kejawab!</h2>
@@ -294,7 +293,7 @@
         // ==========================================
         // 1. PENGATURAN PASSWORD & LAGU
         // ==========================================
-        const passwordBenar = "sayangku"; 
+        const passwordBenar = "930012041911"; 
         const mulaiLaguDiDetik = 0; 
         
         // ==========================================
@@ -342,6 +341,7 @@
             lanjut(10); 
         }
 
+        // Fungsi Kirim Semua Jawaban ke Email (Berjalan di Q5)
         function kirimKeEmail() {
             const jawaban4 = document.getElementById('jawabanTeks4').value;
             const jawaban5 = document.getElementById('jawabanTeks5').value;
@@ -352,9 +352,10 @@
                 return;
             }
 
-            tombol.innerText = "Loading...";
+            tombol.innerText = "Sending... ⏳";
             tombol.disabled = true;
 
+            // Kumpulkan semua jawaban jadi satu laporan
             fetch(linkFormspree, {
                 method: 'POST',
                 headers: {
@@ -362,23 +363,23 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "Jawaban Q1 (Paling Random)": jawabanQ1,
-                    "Jawaban Q2 (Deal with mess)": jawabanQ2,
-                    "Jawaban Q3 (Ngeselin/Ngangen)": jawabanQ3,
-                    "Jawaban Q4 (Kangen Duluan)": jawaban4,
-                    "Jawaban Q5 (Perasaan Suka/Duka)": jawaban5
+                    "Jawaban Q1 (Random & Jahil)": jawabanQ1,
+                    "Jawaban Q2 (Zodiac Sagitarius)": jawabanQ2,
+                    "Jawaban Q3 (Paling Aneh & Asbun)": jawabanQ3,
+                    "Jawaban Q4 (Suka/Duka & Moment)": jawaban4,
+                    "Jawaban Q5 (Bayangan Hubungan & Alasan Web)": jawaban5
                 })
             }).then(response => {
-                tombol.innerText = "Jawab & Lanjut";
+                tombol.innerText = "Send to Kakak 💌";
                 tombol.disabled = false;
                 lanjut(11);
             }).catch(error => {
-                tombol.innerText = "Jawab & Lanjut";
+                tombol.innerText = "Send to Kakak 💌";
                 tombol.disabled = false;
                 lanjut(11);
             });
         }
-
+        
         function terimaCinta() {
             confetti({
                 particleCount: 150,
