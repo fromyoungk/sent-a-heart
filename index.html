@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Private Notification</title>
-    <!-- Script untuk Efek Confetti (Kembang Api Kertas) -->
+    <!-- Script untuk Efek Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         body {
@@ -41,7 +41,6 @@
             max-height: 85vh; 
             overflow-y: auto; 
         }
-        /* Sembunyikan scrollbar tapi tetap bisa di-scroll */
         .container::-webkit-scrollbar {
             display: none;
         }
@@ -87,6 +86,18 @@
             text-align: center;
         }
 
+        /* GAYA UNTUK KOLOM ISIAN JAWABAN */
+        textarea {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            margin-bottom: 15px;
+            resize: none; 
+        }
+
         button {
             background-color: #ff4757;
             color: white;
@@ -99,6 +110,7 @@
             margin: 5px;
         }
         button:hover { background-color: #ff6b81; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; } 
 
         .btn-choice {
             display: block;
@@ -119,7 +131,6 @@
             margin: 0;
         }
 
-        /* EFEK KURSOR CINCIN KHUSUS UNTUK TOMBOL ACCEPT & DECLINE (HANYA AKTIF DI LAPTOP/PC) */
         #btnMau, #btnTidak {
             cursor: url('cincin.png'), pointer;
         }
@@ -128,7 +139,6 @@
             z-index: 100;
         }
 
-        /* Gaya khusus untuk link X (Twitter) */
         .link-x {
             display: inline-block;
             margin-top: 15px;
@@ -144,7 +154,6 @@
             background-color: #0c85d0;
         }
 
-        /* PENGATURAN FOTO DIPERBESAR */
         .img-single {
             width: 100%;
             max-width: 250px; 
@@ -173,21 +182,18 @@
     <audio id="bgMusic" src="1000x-GheaIndrawari.m4a" loop></audio>
 
     <div class="container">
-
-        <!-- Step 1: Layar Notifikasi (Awal) -->
+        <!-- Step 1-4 -->
         <div id="step1" class="step active">
             <h2>You have one private notification.<br>Buka sekarang?</h2>
             <button class="btn-action" onclick="lanjut(2)">Check</button>
         </div>
 
-        <!-- Step 2: Halaman Password -->
         <div id="step2" class="step">
             <h2>Masukkan password untuk membuka pesan rahasia ini 🔐</h2>
             <input type="password" id="inputPassword" placeholder="Ketik password di sini...">
             <br><button class="btn-action" onclick="cekPassword()">Buka</button>
         </div>
         
-        <!-- Step 3: Teks Kenangan (Flashback) -->
         <div id="step3" class="step">
             <h2>Mengingat Kembali...</h2>
             <p class="teks-cerita">
@@ -197,7 +203,6 @@
             <button class="btn-action" onclick="lanjut(4)">Lanjut</button>
         </div>
 
-        <!-- Step 4: Foto Kenangan (Polaroid 1 muncul setelah cerita) -->
         <div id="step4" class="step">
             <div class="img-group">
                 <img src="PolaroidFirstMeet1.png" alt="Foto Kiri">
@@ -208,76 +213,72 @@
             <button class="btn-action" onclick="lanjut(5)">Next</button>
         </div>
 
-        <!-- Step 5: Info menuju Pertanyaan -->
+        <!-- Step 5-9 -->
         <div id="step5" class="step">
             <h2>Nah, sebelum lanjut lebih jauh...</h2>
-            <p class="teks-tengah">Ada beberapa pertanyaan penting nih yang mau aku sampein ke kamu. Jawab sejujur-jujurnya ya!</p>
+            <p class="teks-tengah">Ada total 6 pertanyaan penting nih yang mau aku sampein ke kamu. Jawab sejujur-jujurnya ya!</p>
             <button class="btn-action" onclick="lanjut(6)">Mulai Pertanyaan</button>
         </div>
 
-        <!-- Step 6: Pertanyaan 1 -->
         <div id="step6" class="step">
             <h2>1. Let's be honest, di antara kita berdua, siapa yang sebenarnya paling random dan suka iseng?</h2>
             <button class="btn-choice" onclick="lanjut(7)">Definitely me (Aku)</button>
             <button class="btn-choice" onclick="lanjut(7)">Kamu lah!</button>
         </div>
 
-        <!-- Step 7: Pertanyaan 2 -->
         <div id="step7" class="step">
             <h2>2. We both know aku orangnya gampang bosan dan kadang super unorganized. Tapi kalau lagi sama kamu, kenapa rasanya beda ya?<br><br>Who usually has to deal with my mess?</h2>
             <button class="btn-choice" onclick="lanjut(8)">Me, obviously</button>
             <button class="btn-choice" onclick="lanjut(8)">Udah tahu nanya 🙄</button>
         </div>
 
-        <!-- Step 8: Pertanyaan 3 -->
         <div id="step8" class="step">
             <h2>3. As a Gemini, do you think I’m actually lebih ke ngeselin atau ngangenin?</h2>
             <button class="btn-choice" onclick="lanjut(9)">Super ngeselin</button>
             <button class="btn-choice" onclick="lanjut(9)">Ngeselin but slightly ngangenin</button>
         </div>
 
-        <!-- Step 9: Pertanyaan 4 -->
         <div id="step9" class="step">
             <h2>4. Who secretly misses the other person more? Siapa yang gengsi tapi kangen duluan?</h2>
             <button class="btn-choice" onclick="lanjut(10)">I do</button>
             <button class="btn-choice" onclick="lanjut(10)">You do</button>
         </div>
 
-        <!-- Step 10: Pertanyaan 5 -->
+        <!-- STEP 10: PERTANYAAN 5 (MODE ISIAN TEKS) -->
         <div id="step10" class="step">
-            <h2>5. Last question... why do you think I went through all this trouble making a secret website khusus buat kamu?</h2>
-            <button class="btn-choice" onclick="lanjut(11)">Because you have too much free time</button>
-            <button class="btn-choice" onclick="lanjut(11)">Because you have something to tell me</button>
+            <h2>5. Sejujurnya, apa hal yang paling kamu suka (atau mungkin kurang suka) dari aku, dan gimana perasaanmu selama kita deket ini?</h2>
+            
+            <textarea id="jawabanTeks" rows="4" placeholder="Ketik perasaan jujurmu di sini..."></textarea>
+            
+            <br>
+            <button class="btn-action" id="btnKirimRahasia" onclick="kirimKeEmail()">Jawab & Lanjut</button>
         </div>
 
-        <!-- Step 11: Foto Polaroid ke-2 -->
+        <!-- Step 11-13 -->
         <div id="step11" class="step">
             <img src="Polaroidiloveyou.png" alt="Foto 2" class="img-single">
-            <h2>Okay, all questions answered!</h2>
+            <h2>Okay, 5 pertanyaan udah kejawab!</h2>
             <p class="teks-cerita">
-                Satu hal yang pasti, aku nyaman banget ada di deket kamu. Kamu bikin semuanya kerasa lebih *make sense*. 
-                Sekarang, tarik napas dulu, karena slide selanjutnya adalah alasan utama website ini dibuat...
+                Satu hal yang pasti, aku ngerasa nyaman banget ada di deket kamu. Kamu bikin semuanya kerasa lebih masuk akal dan tenang. 
+                Sekarang, tarik napas dulu, karena slide selanjutnya adalah Pertanyaan ke-6 alias pertanyaan yang paling penting...
             </p>
             <button class="btn-action" onclick="lanjut(12)">Ready?</button>
         </div>
 
-        <!-- Step 12: Penembakan Akhir -->
         <div id="step12" class="step">
-            <h2>So, after all those memories and questions... cuma sisa satu request lagi nih yang belum di-submit.<br><br>Will you accept my private request to enter your heart and be my girlfriend? ❤️</h2>
+            <h2>6. So, after all those memories and everything we've been through... cuma sisa satu request lagi nih.<br><br>Will you accept my private request to enter your heart and be my girlfriend? ❤️</h2>
             <div class="action-buttons">
-                <!-- EMOJI CINCIN DITAMBAHKAN DI SINI -->
                 <button class="btn-action" id="btnMau" onclick="terimaCinta()">💍 Accept</button>
                 <button class="btn-action" id="btnTidak" onmouseover="pindahTombol()" onclick="pindahTombol()">Decline</button>
             </div>
         </div>
 
-        <!-- Step 13: Ending -->
         <div id="step13" class="step">
             <img src="PolaroidEnd.png" alt="Foto 3" class="img-single">
             <h2>Yeay! Request Accepted ❤️</h2>
             <p class="teks-tengah">Thank you, I love you!<br>Sekarang, cepetan kasih tau reaksi kamu ke aku!</p>
             
-            <!-- UBAH LINK X (TWITTER) DI BAWAH INI -->
+            <!-- JANGAN LUPA UBAH LINK X (TWITTER) DI BAWAH INI -->
             <a href="https://x.com/by__youngk" target="_blank" class="link-x">Kirim Pesan ke X Aku 📩</a>
         </div>
 
@@ -285,11 +286,15 @@
 
     <script>
         // ==========================================
-        // BAGIAN PENGATURAN
+        // 1. PENGATURAN PASSWORD & LAGU
         // ==========================================
         const passwordBenar = "sayangku"; 
         const mulaiLaguDiDetik = 0; 
+        
         // ==========================================
+        // 2. LINK FORMSPREE SUDAH DIMASUKKAN DI SINI
+        // ==========================================
+        const linkFormspree = "https://formspree.io/f/xjygbqkz";
 
         function cekPassword() {
             let inputan = document.getElementById('inputPassword').value;
@@ -297,7 +302,6 @@
                 let musik = document.getElementById('bgMusic');
                 musik.currentTime = mulaiLaguDiDetik; 
                 musik.play();
-                
                 lanjut(3); 
             } else {
                 alert("Passwordnya salah! Coba ingat-ingat lagi 🤭");
@@ -308,6 +312,39 @@
             let steps = document.querySelectorAll('.step');
             steps.forEach(step => step.classList.remove('active'));
             document.getElementById('step' + nextStep).classList.add('active');
+        }
+
+        // FUNGSI KIRIM EMAIL DIAM-DIAM
+        function kirimKeEmail() {
+            const jawaban = document.getElementById('jawabanTeks').value;
+            const tombol = document.getElementById('btnKirimRahasia');
+
+            if(jawaban.trim() === "") {
+                alert("Jawab dulu dong, masa dikosongin! 🥺");
+                return;
+            }
+
+            tombol.innerText = "Loading...";
+            tombol.disabled = true;
+
+            fetch(linkFormspree, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "Pesan Dari Dia": jawaban
+                })
+            }).then(response => {
+                tombol.innerText = "Jawab & Lanjut";
+                tombol.disabled = false;
+                lanjut(11);
+            }).catch(error => {
+                tombol.innerText = "Jawab & Lanjut";
+                tombol.disabled = false;
+                lanjut(11);
+            });
         }
 
         function terimaCinta() {
@@ -321,10 +358,8 @@
 
         function pindahTombol() {
             const btn = document.getElementById('btnTidak');
-            
             const maxX = window.innerWidth - btn.offsetWidth - 20;
             const maxY = window.innerHeight - btn.offsetHeight - 20;
-            
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
             
