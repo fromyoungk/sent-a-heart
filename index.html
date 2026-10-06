@@ -131,12 +131,16 @@
             margin: 0;
         }
 
-        #btnMau, #btnTidak {
+  /* Kursor berubah jadi gambar cincin saat diarahkan ke tombol Yes/No */
+        .btn-yes, .btn-no {
             cursor: url('cincin.png'), pointer;
         }
-        #btnTidak {
+        
+        /* Tambahan supaya pas lari tombol No-nya jadi mulus */
+        .btn-no {
             position: relative;
             z-index: 100;
+            transition: top 0.2s ease, left 0.2s ease;
         }
 
         .link-x {
@@ -203,7 +207,7 @@
                 <br><br>
                 Terima kasih sudah sabar, sudah sayang, sudah perhatian, sudah marah, sudah sedih, sudah kecewa, sudah bahagia, dan sudah cerita semuanya ke kakak apa yang dedek rasain. Kedepannya pasti tidak akan selalu mudah. Kakak harap kita berdua selalu ingat apa yang sudah kita lalui hingga sampai di sini. <i>Honestly having you around makes everything so much better. I love you</i> dedek jiminie cayang.
             </p>
-            <button class="btn-action" onclick="lanjut(4)">Lanjut</button>
+            <button class="btn-action" onclick="lanjut(4)">Next</button>
         </div>
 
         <div id="step4" class="step">
@@ -405,14 +409,19 @@
             lanjut(13);
         }
 
-        function pindahTombol(btn) {
-            const btn = document.getElementById('btnTidak');
+       function pindahTombol(btn) {
+            // Ubah posisinya jadi fixed agar bisa lari bebas ke seluruh layar handphone/laptop
+            btn.style.position = 'fixed';
+            
+            // Hitung batas maksimal layar supaya tombol tidak hilang keluar layar
             const maxX = window.innerWidth - btn.offsetWidth - 20;
             const maxY = window.innerHeight - btn.offsetHeight - 20;
+            
+            // Acak posisi baru
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
             
-            btn.style.position = 'absolute';
+            // Pindahkan tombol ke posisi baru
             btn.style.left = randomX + 'px';
             btn.style.top = randomY + 'px';
         }
