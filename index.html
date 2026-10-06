@@ -66,7 +66,7 @@
             line-height: 1.6;
             color: #444;
             margin-bottom: 20px;
-            text-align: left; 
+            text-align: justify; 
         }
         p.teks-tengah {
             font-size: 16px;
@@ -274,7 +274,7 @@
         <div id="step12" class="step">
             <h2>FINAL FILE: The Promise 💍</h2>
             <p class="teks-cerita">
-                Setelah semua yang kita lewati, kakak cuma pengen satu hal, eh tidak. Kakak mau melakukan banyak hal bersama dekdek. Maka dari itu, kakak ingin terus berada di samping dedek. Menjadi pendengar semua cerita dedek penting tidak penting. Menjadi orang yang suka dedek jahili. Jadi tempat dedek pulang dan manja-manja dengan kakak. Kakak mau melawati semua hal bareng-bareng, di sini.<br><br>
+                Setelah semua yang kita lewati, kakak cuma pengen satu hal, eh tidak. Kakak mau melakukan banyak hal bersama dedek. Maka dari itu, kakak ingin terus berada di samping dedek. Menjadi pendengar semua cerita dedek penting tidak penting. Menjadi orang yang suka dedek jahili. Jadi tempat dedek pulang dan manja-manja dengan kakak. Kakak mau melawati semua hal bareng-bareng, di sini.<br><br>
                 Untuk melengkapi memori kita hari ini, ada satu hal yang mau kakak kasih secara langsung. Coba alihkan pandangan dedek dari layar ini dan lihat ke kakak sekarang...
                 <br><br>
                 So, dedek jiminie cayang yang cantik, gemes, seksi, dan lucu... <i>Will you be my girlfriend?</i>
@@ -405,14 +405,14 @@
             lanjut(13);
         }
 
-        function pindahTombol() {
+        function pindahTombol(btn) {
             const btn = document.getElementById('btnTidak');
             const maxX = window.innerWidth - btn.offsetWidth - 20;
             const maxY = window.innerHeight - btn.offsetHeight - 20;
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
             
-            btn.style.position = 'fixed';
+            btn.style.position = 'absolute';
             btn.style.left = randomX + 'px';
             btn.style.top = randomY + 'px';
         }
